@@ -1,22 +1,22 @@
 {
-    "name": "atom-format-lua",
-    "main": "./lib/atom-format-lua",
-    "version": "0.0.2",
-    "description": "Atom Format Lua",
-    "keywords": [
-      "Lua",
-      "Format"
+  "name": "atom-format-lua",
+  "main": "./lib/atom-format-lua",
+  "version": "0.0.3",
+  "description": "Atom Format Lua",
+  "keywords": [
+    "Lua",
+    "Format"
   ],
-    "activationCommands": {
-        "atom-workspace": "atom-format-lua:format"
-    },
-    "license": "MIT",
-    "repository": "https://github.com/mingjunyang/atom-format-lua",
-    "bugs": {
-        "url": "https://github.com/mingjunyang/atom-format-lua/issues"
-    },
-    "engines": {
-        "atom": ">=1.0.0 <2.0.0"
-    },
-    "dependencies": {}
+  "activationCommands": {
+    "atom-workspace": "atom-format-lua:format"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/mingjunyang/atom-format-lua",
+  "bugs": {
+    "url": "https://github.com/mingjunyang/atom-format-lua/issues"
+  },
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {}
 }
