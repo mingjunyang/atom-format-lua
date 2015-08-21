@@ -1,0 +1,22 @@
+# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
+'context-menu':
+    'atom-text-editor': [
+        {
+            'label': 'Format atom-format-lua'
+            'command': 'atom-format-lua:format'
+        }
+    ]
+'menu': [
+    {
+        'label': 'Packages'
+        'submenu': [
+            'label': 'atom-format-lua'
+            'submenu': [
+                {
+                    'label': 'Format'
+                    'command': 'atom-format-lua:format'
+                }
+            ]
+        ]
+    }
+]
