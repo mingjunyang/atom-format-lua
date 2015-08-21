@@ -1,7 +1,7 @@
 {
     "name": "atom-format-lua",
     "main": "./lib/atom-format-lua",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Atom Format Lua",
     "keywords": [
       "Lua",
@@ -10,8 +10,11 @@
     "activationCommands": {
         "atom-workspace": "atom-format-lua:format"
     },
-    "repository": "https://github.com/atom/atom-format-lua",
     "license": "MIT",
+    "repository": "https://github.com/mingjunyang/atom-format-lua",
+    "bugs": {
+        "url": "https://github.com/mingjunyang/atom-format-lua/issues"
+    },
     "engines": {
         "atom": ">=1.0.0 <2.0.0"
     },
