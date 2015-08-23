@@ -1,7 +1,7 @@
 {
   "name": "atom-format-lua",
   "main": "./lib/atom-format-lua",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Atom Format Lua",
   "keywords": [
     "Lua",
