@@ -26,7 +26,9 @@ module.exports = AtomFormatLua =
         else
             return
 
-        wkspc=path.resolve('./luacode')
+        wkspc=path.join(atom.packages.packageDirPaths[0],'atom-format-lua/luacode')
+
+        console.log(wkspc)
 
         formatterScript=path.join(wkspc,'formatter.lua')
         lua51 = atom.config.get "atom-format-lua.lua51"
@@ -34,16 +36,24 @@ module.exports = AtomFormatLua =
         lua51path=process.spawnSync('which', ['lua5.1'])
         params = [formatterScript, "--file",tempfile]
 
-        if lua51path.stderr
-            console.log 'no lua5.1'
-        if lua51path.stdout
-            lua51 = lua51path.stdout.asciiSlice().replace(/\s*$/,'')
+        # console.log lua51path
 
-        which = process.spawnSync('which', ['lua5.1']).status
-        if which == 1 and not fs.existsSync(lua51)
-            console.log "unable to open lua5.1"
-            return
+        if lua51path.stderr.length
+            console.log 'no lua5.1'
+        if lua51path.stdout.length
+            lua51 = lua51path.stdout.toString().replace(/\s*$/,'')
+            console.log(lua51path.stdout.toString())
+
+        # which = process.spawnSync('which', ['lua5.1']).status
+        # if which == 1 and not fs.existsSync(lua51)
+        #     console.log "unable to open lua5.1"
+        #     return
+
+        console.log(lua51,params)
 
         proc = process.spawn( lua51, params,{cwd:wkspc})
-        proc.stdout.on('data',(data)-> console.log 'out' ,data.asciiSlice())
-        proc.stderr.on('data',(data)-> console.log 'err' ,data.asciiSlice())
+
+        # console.log proc
+        #
+        # proc.stdout.on('data',(data)-> console.log 'out' ,data.asciiSlice())
+        # proc.stderr.on('data',(data)-> console.log 'err' ,data.asciiSlice())

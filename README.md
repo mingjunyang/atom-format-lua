@@ -5,7 +5,15 @@
 ### need lua5.1 on your PATH,the formatter.lua did not work on lua5.2 .
 
 on linux system , you can use command `which lua5.1` ,if result like `/usr/bin/lua5.1`,it's can work.
-### 
+###
+
+###### 2015-08-27 fix didnot work
+It's my error.
+在设置 formatter.lua 工作环境变量的时候取值如下，之前测试的时候没有发现问题,因为我就是在`atom-format-lua`包里测试的，能正常的工作。
+```coffescript
+wkspc=path.resolve('./luacode')
+```
+但是后来发现，换到其他的工作目录之后，上面方式取到的路径是当前工作目录的路径，所以这个插件使用的时候是报错的，在这之前完全没有正常工作。
 
 ###### 2015-08-22 alpha 0.1.0
 1. 初步完成了原型功能，非常粗糙，这是第一次写coffescript，很多问题还要继续处理，写了一半才发现可以直接写JavaScript。
