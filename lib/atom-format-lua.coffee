@@ -31,18 +31,22 @@ module.exports = AtomFormatLua =
         console.log(wkspc)
 
         formatterScript=path.join(wkspc,'formatter.lua')
-        lua51 = atom.config.get "atom-format-lua.lua51"
 
         lua51path=process.spawnSync('which', ['lua5.1'])
         params = [formatterScript, "--file",tempfile]
 
         # console.log lua51path
 
-        if lua51path.stderr.length
-            console.log 'no lua5.1'
-        if lua51path.stdout.length
-            lua51 = lua51path.stdout.toString().replace(/\s*$/,'')
-            console.log(lua51path.stdout.toString())
+        try
+            if lua51path.stderr.length
+                console.log 'no lua5.1'
+            if lua51path.stdout.length
+                lua51 = lua51path.stdout.toString().replace(/\s*$/,'')
+                # console.log(lua51path.stdout.toString())
+        catch error
+            # console.log error
+            lua51 = atom.config.get "atom-format-lua.lua51"
+            # console.log lua51
 
         # which = process.spawnSync('which', ['lua5.1']).status
         # if which == 1 and not fs.existsSync(lua51)

@@ -7,6 +7,19 @@
 on linux system , you can use command `which lua5.1` ,if result like `/usr/bin/lua5.1`,it's can work.
 ###
 
+###### 2015-10-07 add lua5.1 path in config.cson
+
+you should be set this value in `config.cson`
+```cson
+   "atom-format-lua":
+     lua51: "/usr/bin/lua5.1"
+```
+if windows7/8/10.I haven't windows system,so I don't know where is lua5.1, maybe the  path like `C:\\xx\\xx\\lua5.1.exe`
+```cson
+   "atom-format-lua":
+     lua51: "c:\program file\lua\bin\lua5.1.exe"
+```
+
 ###### 2015-08-27 fix didnot work
 It's my error.
 在设置 formatter.lua 工作环境变量的时候取值如下，之前测试的时候没有发现问题,因为我就是在`atom-format-lua`包里测试的，能正常的工作。
