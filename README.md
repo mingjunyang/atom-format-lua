@@ -1,5 +1,7 @@
 # atom-format-lua package
 ---
+
+[![Join the chat at https://gitter.im/mingjunyang/atom-format-lua](https://badges.gitter.im/mingjunyang/atom-format-lua.svg)](https://gitter.im/mingjunyang/atom-format-lua?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 本项目来自主要代码来自 [FormatLua](https://github.com/denglf/FormatLua)，经过该项目作者同意使用MIT协议使用到atom package。
 
 ### need lua5.1 on your PATH,the formatter.lua did not work on lua5.2 .
