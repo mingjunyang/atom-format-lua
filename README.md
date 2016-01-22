@@ -9,6 +9,8 @@
 on linux system , you can use command `which lua5.1` ,if result like `/usr/bin/lua5.1`,it's can work.
 ###
 
+###### 2016-01-23 rewrite atom-format-lua.coffee as lib/atom-format-lua.js
+
 ###### 2015-10-07 add lua5.1 path in config.cson
 
 you should be set this value in `config.cson`

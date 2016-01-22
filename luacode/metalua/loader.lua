@@ -41,21 +41,21 @@ local function resc(k) return regexp_magic[k] or k end
 -- or <false> and an error message.
 ----------------------------------------------------------------------
 function M.findfile(name, path_string)
-   local config_regexp = ("([^\n])\n"):rep(5):sub(1, -2)
-   local dir_sep, path_sep, path_mark, execdir, igmark =
-      M.config :match (config_regexp)
-   name = name:gsub ('%.', dir_sep)
-   local errors = { }
-   local path_pattern = string.format('[^%s]+', resc(path_sep))
-   for path in path_string:gmatch (path_pattern) do
-      --printf('path = %s, rpath_mark=%s, name=%s', path, resc(path_mark), name)
-      local filename = path:gsub (resc (path_mark), name)
-      --printf('filename = %s', filename)
-      local file = io.open (filename, 'r')
-      if file then return file, filename end
-      table.insert(errors, string.format("\tno lua file %q", filename))
-   end
-   return false, '\n'..table.concat(errors, "\n")..'\n'
+    local config_regexp = ("([^\n])\n"):rep(5):sub(1, -2)
+    local dir_sep, path_sep, path_mark, execdir, igmark =
+        M.config :match (config_regexp)
+    name = name:gsub ('%.', dir_sep)
+    local errors = { }
+    local path_pattern = string.format('[^%s]+', resc(path_sep))
+    for path in path_string:gmatch (path_pattern) do
+        --printf('path = %s, rpath_mark=%s, name=%s', path, resc(path_mark), name)
+        local filename = path:gsub (resc (path_mark), name)
+        --printf('filename = %s', filename)
+        local file = io.open (filename, 'r')
+        if file then return file, filename end
+        table.insert(errors, string.format("\tno lua file %q", filename))
+    end
+    return false, '\n'..table.concat(errors, "\n")..'\n'
 end
 
 ----------------------------------------------------------------------
@@ -74,20 +74,20 @@ local function metalua_cache_loader(name, src_filename, src)
     local delta        = dst_date - src_date
     local bytecode, file, msg
     if delta <= 0 then
-       print "NEED TO RECOMPILE"
-       bytecode = mlc :src_to_bytecode (src, name)
-       for x in dst_filename :gmatch('()'..dir_sep) do
-          lfs.mkdir(dst_filename:sub(1,x))
-       end
-       file, msg = io.open(dst_filename, 'wb')
-       if not file then error(msg) end
-       file :write (bytecode)
-       file :close()
+        print "NEED TO RECOMPILE"
+        bytecode = mlc :src_to_bytecode (src, name)
+        for x in dst_filename :gmatch('()'..dir_sep) do
+            lfs.mkdir(dst_filename:sub(1,x))
+        end
+        file, msg = io.open(dst_filename, 'wb')
+        if not file then error(msg) end
+        file :write (bytecode)
+        file :close()
     else
-       file, msg = io.open(dst_filename, 'rb')
-       if not file then error(msg) end
-       bytecode = file :read '*a'
-       file :close()
+        file, msg = io.open(dst_filename, 'rb')
+        if not file then error(msg) end
+        bytecode = file :read '*a'
+        file :close()
     end
     return mlc :bytecode_to_function (bytecode)
 end
@@ -96,13 +96,13 @@ end
 -- Load a metalua source file.
 ----------------------------------------------------------------------
 function M.metalua_loader (name)
-   local file, filename_or_msg = M.findfile (name, M.mpath)
-   if not file then return filename_or_msg end
-   local luastring = file:read '*a'
-   file:close()
-   if M.mcache and pcall(require, 'lfs') then
-      return metalua_cache_loader(name, filename_or_msg, luastring)
-   else return require 'metalua.compiler'.new() :src_to_function (luastring, name) end
+    local file, filename_or_msg = M.findfile (name, M.mpath)
+    if not file then return filename_or_msg end
+    local luastring = file:read '*a'
+    file:close()
+    if M.mcache and pcall(require, 'lfs') then
+        return metalua_cache_loader(name, filename_or_msg, luastring)
+    else return require 'metalua.compiler'.new() :src_to_function (luastring, name) end
 end
 
 
@@ -122,7 +122,7 @@ function extension (name, mlp)
         local ast =extend_func(mlp)
         mlp.extensions[complete_name] =extend_func
         return ast
-     end
+    end
 end
 
 return M

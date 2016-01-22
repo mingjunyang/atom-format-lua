@@ -2,7 +2,7 @@
 'context-menu':
     'atom-text-editor': [
         {
-            'label': 'Format atom-format-lua'
+            'label': 'Format Lua'
             'command': 'atom-format-lua:format'
         }
     ]
@@ -10,10 +10,10 @@
     {
         'label': 'Packages'
         'submenu': [
-            'label': 'atom-format-lua'
+            'label': 'Format lua'
             'submenu': [
                 {
-                    'label': 'Format'
+                    'label': 'Format Lua'
                     'command': 'atom-format-lua:format'
                 }
             ]
