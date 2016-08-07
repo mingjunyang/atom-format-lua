@@ -673,6 +673,8 @@ if not args.filename then error(usage.."no Lua file given") end
 args.mytabsize = args.mytabsize or mytabs
 args.myindent = args.myindent or myindent
 -- print(readfile(args.filename))
-resultText=M.indentcode(readfile(args.filename), '\n', true, '    ')
+resultText=M.indentcode(readfile(args.filename), '\n', true, (' '):rep(args.mytabsize))
 -- print()
-writeFile(args.filename,resultText)
+if resultText then
+  writeFile(args.filename,resultText)
+end
